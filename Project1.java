@@ -12,5 +12,11 @@ public class Project1{
     for (int i=0; i<test.length; i++){
       System.out.println(test[i]);
     }
+
+    int[][] test3 = {{1,2}, {2,3}};
+    System.out.println(Arrays.toString(test3));
+    for (int[] row: test3){
+      System.out.println(Arrays.toString(row));
+    }
   }
 }
