@@ -34,7 +34,12 @@ public class Project1{
     for (int i=0; i<map.length; i++){
       System.out.print(i+"|");
       for (int j=0; j<map[i].length; j++){
-        System.out.print(map[i][j]);
+        if (map[i][j]=='1')
+          System.out.print('@');
+        else if (map[i][j]=='2')
+          System.out.print(' ');
+        else
+          System.out.print(map[i][j]);
         if (j!=9){
           System.out.print(" ");
         }
