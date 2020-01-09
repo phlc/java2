@@ -18,6 +18,7 @@ public class Project1{
 
     //deployShips
     deployShips(map);
+    printMap(map);//test
 
   }//end of main Function
 
@@ -77,21 +78,30 @@ public class Project1{
     System.out.print("\033[H\033[2J"); //clear screen
     System.out.println("Your ships deployment: ");
     printMap(map);
+    System.out.println("\nType C to continue.");
+    input.next();
+
 
     //computers ships
+    System.out.print("\033[H\033[2J"); //clear screen
     System.out.println("\nComputer is deploying his ships.");
+    Random rand = new Random();
     for (int i=1; i<=5; i++){
-        x = input.nextInt();
-        y = input.nextInt();
+        x = rand.nextInt(10);
+        y = rand.nextInt(10);
 
         //check if coordinates are valid
         if (map[x][y] != ' '){
-          System.out.println("Sorry, invalid coordinates. Try again.");
           i--;
         }
         else{
-          map[x][y] = '1';
+          map[x][y] = '2';
+          System.out.println("Ship "+i+". deployment successful");
         }
     }
+
+    System.out.println();
+    System.out.println("\nType C to continue.");
+    input.next();
   }//end of deployShips
 }//end of class Project1
