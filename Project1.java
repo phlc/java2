@@ -9,6 +9,7 @@ public class Project1{
       Arrays.fill(row, ' ');
 
     //print greetings
+    System.out.print("\033[H\033[2J"); //clear screen
     System.out.println("**** Welcome to Battle Ships game ****\n");
     System.out.println("Right now the see is empty.\n");
     printMap(map);
@@ -21,18 +22,21 @@ public class Project1{
   */
   public static void printMap (char[][] map){
     //print first line
-    System.out.println("  0123456789  ");
+    System.out.println("  0 1 2 3 4 5 6 7 8 9  ");
 
     //print changing lines
     for (int i=0; i<map.length; i++){
       System.out.print(i+"|");
       for (int j=0; j<map[i].length; j++){
         System.out.print(map[i][j]);
+        if (j!=9){
+          System.out.print(" ");
+        }
       }//end for
       System.out.println("|"+i);
     }//end for
 
     //print last line
-    System.out.println("  0123456789  ");
+    System.out.println("  0 1 2 3 4 5 6 7 8 9  ");
   }//end of printMap
 }//end of class Project1
