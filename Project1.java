@@ -70,7 +70,11 @@ public class Project1{
         y = input.nextInt();
 
         //check if coordinates are valid
-        if (map[x][y] != ' '){
+        if (x>9 || x<0 || y>9 || y<0){
+          System.out.println("Sorry, invalid coordinates. Try again.");
+          i--;
+        }
+        else if (map[x][y] != ' '){
           System.out.println("Sorry, invalid coordinates. Try again.");
           i--;
         }
