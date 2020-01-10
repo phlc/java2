@@ -18,7 +18,9 @@ public class Project1{
 
     //deployShips
     deployShips(map);
-    printMap(map);//test
+
+    //battle
+    battle(map);
 
   }//end of main Function
 
@@ -113,4 +115,62 @@ public class Project1{
     System.out.println("\nType C to continue.");
     input.next();
   }//end of deployShips
+
+  /*
+  battle - runs the game taking turns
+  @param: 2D array
+  */
+  public static void battle (char[][] map){
+    //declarations
+    Scanner input = new Scanner(System.in);
+    int x=0, y=0, player=0, computer=0;
+
+    //Inicial screen
+    System.out.print("\033[H\033[2J"); //clear screen
+    System.out.println("Get ready for an epic naval battle!!");
+
+    //loop for battle
+    while (player<5 && computer<5){
+      //players turn
+      System.out.print("\033[H\033[2J"); //clear screen
+      printMap(map);
+      System.out.println("Your turn:");
+      System.out.print("Coordinate X for your strike: ");
+      x = input.nextInt();
+      System.out.print("Coordinate Y for your strike: ");
+      y = input.nextInt();
+
+      //check if coordinates are valid
+      for (int i=0; i<1; i++){
+        if (x>9 || x<0 || y>9 || y<0){
+          System.out.println("Sorry, invalid coordinates. Try again.");
+          i--;
+        }//end if
+        else{
+          if (map[x][y] == '2'){
+            map[x][y] = '!';
+            System.out.println("Boom! You sunk a ship!");
+            player++;
+          }
+          else if (map[x][y] == '1'){
+            map[x][y] = 'x';
+            System.out.println("Oh no, you sunk your own ship :(");
+            computer++;
+          }
+          else if (map[x][y] == ' '){
+            map[x][y] = '-';
+            System.out.println("Sorry, you missed.");
+          }
+          else{
+            System.out.println("Sorry, you missed. Location already shooted at.");
+          }
+        }//end else
+      }//end for
+      printMap(map);
+      System.out.println("\nType C to continue.");
+      input.next();
+    }//end while
+
+
+  }//end of battle Function
 }//end of class Project1
