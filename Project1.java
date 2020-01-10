@@ -123,6 +123,7 @@ public class Project1{
   public static void battle (char[][] map){
     //declarations
     Scanner input = new Scanner(System.in);
+    Random rand = new Random();
     int x=0, y=0, player=0, computer=0;
 
     //Inicial screen
@@ -163,6 +164,43 @@ public class Project1{
           }
           else{
             System.out.println("Sorry, you missed. Location already shooted at.");
+          }
+        }//end else
+      }//end for
+      printMap(map);
+      System.out.println("\nType C to continue.");
+      input.next();
+
+      //computers turn
+      System.out.print("\033[H\033[2J"); //clear screen
+      System.out.println("Computer's turn:");
+      x = rand.nextInt(10);
+      y = rand.nextInt(10);
+      System.out.println("X: "+x+". Y: "+y+".");
+
+      //check if coordinates are valid
+      for (int i=0; i<1; i++){
+        if (x>9 || x<0 || y>9 || y<0){
+          System.out.println("Sorry, invalid coordinates. Try again.");
+          i--;
+        }//end if
+        else{
+          if (map[x][y] == '2'){
+            map[x][y] = '!';
+            System.out.println("Haha! Computer sunk his own ship!");
+            player++;
+          }
+          else if (map[x][y] == '1'){
+            map[x][y] = 'x';
+            System.out.println("Computer sunk one of your ships!");
+            computer++;
+          }
+          else if (map[x][y] == ' '){
+            map[x][y] = '-';
+            System.out.println("Computer missed.");
+          }
+          else{
+            System.out.println("Computer missed. Location already shooted at.");
           }
         }//end else
       }//end for
